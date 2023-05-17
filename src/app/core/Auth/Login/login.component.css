@@ -1,0 +1,22 @@
+#btn-submit{
+ 
+    font-weight: 600;
+    font-size: 16px;
+    background-color: gainsboro;
+    color:#000
+
+}
+#btn-submit:hover{
+    background-color: #008374;
+    color: #fff;
+   
+}
+.signup{
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+    padding:30px;
+}
+.navgiated{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}

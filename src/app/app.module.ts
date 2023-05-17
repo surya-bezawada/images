@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './core/Layout/header/header.component';
 import { FooterComponent } from './core/Layout/Footer/footer.component';
+import { AuthComponent } from './core/Auth/signUp/Auth.component';
+import { LoginComponent } from './core/Auth/Login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AuthComponent,
+    LoginComponent
   
   ],
   imports: [
