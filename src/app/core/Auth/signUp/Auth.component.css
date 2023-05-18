@@ -1,4 +1,4 @@
-#btn-submit{
+.btn{
  
     font-weight: 600;
     font-size: 16px;
@@ -6,7 +6,7 @@
     color:#000
 
 }
-#btn-submit:hover{
+.btn:hover{
     background-color: #008374;
     color: #fff;
    

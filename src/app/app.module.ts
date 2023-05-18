@@ -8,6 +8,10 @@ import { HeaderComponent } from './core/Layout/header/header.component';
 import { FooterComponent } from './core/Layout/Footer/footer.component';
 import { AuthComponent } from './core/Auth/signUp/Auth.component';
 import { LoginComponent } from './core/Auth/Login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './Features/Home/home.component';
+
 
 
 @NgModule({
@@ -16,13 +20,19 @@ import { LoginComponent } from './core/Auth/Login/login.component';
     HeaderComponent,
     FooterComponent,
     AuthComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

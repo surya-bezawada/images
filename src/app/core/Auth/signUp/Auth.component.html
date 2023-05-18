@@ -1,32 +1,23 @@
-<div class="container mt-5 " *ngIf="!showLogin" >
+<div class="container mt-5 p-0"  >
     <div class="row d-flex justify-content-center ">
         <div class="col-5 signup mt-3 mb-3">
-            <form>
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
                 <h4 class="text-center  mb-3" >SignUp</h4>
                 <div class="mb-3 ">
-                    <input type="text" class="form-control rounded-pill" id="firstName" placeholder="First Name">
+                    <input type="text" class="form-control rounded-pill" placeholder="User Name" formControlName="userName" >
                   </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control rounded-pill" id="lastName" placeholder="Last Name">
-                  </div>
-
-                <div class="mb-3">
-               
-                  <input type="email" class="form-control rounded-pill" id="email" placeholder="email">
+                  <input type="email" class="form-control rounded-pill"  placeholder="email" formControlName="email">
                 </div>
                 <div class="mb-3">
-
-                  <input type="password" class="form-control rounded-pill" id="password" placeholder="Password">
+                  <input type="password" class="form-control rounded-pill" placeholder="Password" formControlName="password">
                 </div>
-                <div class="mb-3">
-
-                    <input type="password" class="form-control rounded-pill" id="confirm password" placeholder="Confirm Password">
-                  </div>
+                
                   <div class="d-grid gap-2">
-                    <button class="btn  rounded-pill" id="btn-submit" type="button">Sign Up</button>
+                    <button class="btn  rounded-pill" type="submit">Registration</button>
                   </div>
                   <div >
-                    <a  class=" navgiated mt-2" (click)="openLogin()" >Already you signUp? Please signIn</a>
+                    <a  class=" navgiated mt-2" routerLink="/signIn" >Already you signUp? Please signIn</a>
                   </div>
               </form>
         </div>
