@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './core/Auth/Login/login.component';
-import { AuthComponent } from './core/Auth/signUp/Auth.component';
-import { HomeComponent } from './Features/Home/home.component';
+import { HomeComponent } from './modules/components/home/home.component';
 
+
+
+const accountModule = () => import('./modules/pages/account.module').then(x => x.AccountModule);
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {path:'signup',component:AuthComponent},
-  {path:'signIn',component:LoginComponent}
+  {path:'',redirectTo:'account',pathMatch:'full'},
+  {path:'home',component:HomeComponent},
+  { path: 'account', loadChildren: () => import('./modules/pages/account.module').then(x => x.AccountModule) },
+
 ];
 
 @NgModule({

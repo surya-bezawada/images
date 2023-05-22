@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './core/Layout/header/header.component';
 import { FooterComponent } from './core/Layout/Footer/footer.component';
-import { AuthComponent } from './core/Auth/signUp/Auth.component';
+
 import { LoginComponent } from './core/Auth/Login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './Features/Home/home.component';
+import { HomeComponent } from './modules/components/home/home.component';
+import { ContentPageComponent } from './modules/components/content-page/content-page.component';
+
 
 
 
@@ -19,9 +21,11 @@ import { HomeComponent } from './Features/Home/home.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    AuthComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ContentPageComponent,
+  
+
   
   ],
   imports: [

@@ -1,0 +1,17 @@
+.card-title{
+    text-decoration: none;
+    color:#000;
+}
+.card-title:hover{
+    color: #00796b;
+}
+.auth-name{
+    text-decoration: none;
+    color: #00796b;
+    
+
+}
+.auth-name:hover{
+    color:#000;
+
+}

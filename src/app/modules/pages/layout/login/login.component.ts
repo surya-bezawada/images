@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ApiService } from '../../Http/api.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/core/Http/api.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
   Form!:FormGroup
   myForm!:FormGroup
   showLogin=false;
-  constructor(private service:ApiService,private fb:FormBuilder,private route:Router){
+  constructor(private service:ApiService,private fb:FormBuilder,private route:Router,private acitvatedRoute:ActivatedRoute){
 
     this.Form= this.fb.group({
       email:['',[Validators.required]],
@@ -41,7 +42,7 @@ export class LoginComponent {
         console.log(res);
       })
       this.myForm.reset();
-     // this.route.navigate(['/home']);
+      this.route.navigate(['/home']);
 
     }
 
@@ -54,12 +55,22 @@ export class LoginComponent {
         email: string;
         password: string;
         
-      }).subscribe(res=>{
-       console.log(res)
+      }).subscribe({
+        next: () => {
+            // get return url from query parameters or default to home page
+            const returnUrl = this.acitvatedRoute.snapshot.queryParams['returnUrl'] || '/home';
+            this.route.navigateByUrl(returnUrl);
+        },
+        error: error => {
+          console.log(error)
+        }
+          
       })
       this.Form.reset();
     }
-  }
+
+  
+}
     
 
   openLogin(){
@@ -68,5 +79,6 @@ export class LoginComponent {
   openSignUp(){
     this.showLogin=true
   }
+
 
 }
