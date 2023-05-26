@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './modules/components/home/home.component';
 
 
 
 const accountModule = () => import('./modules/pages/account.module').then(x => x.AccountModule);
+const usersModule = () => import('./modules/features/user.module').then(x => x.UserModule);
 const routes: Routes = [
-  {path:'',redirectTo:'account',pathMatch:'full'},
-  {path:'home',component:HomeComponent},
+  {path:'',redirectTo:'user',pathMatch:'full'},
+
   { path: 'account', loadChildren: () => import('./modules/pages/account.module').then(x => x.AccountModule) },
+  { path: 'user', loadChildren: () =>  import('./modules/features/user.module').then(x => x.UserModule) },
 
 ];
 

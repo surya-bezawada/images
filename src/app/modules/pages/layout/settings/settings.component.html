@@ -1,0 +1,29 @@
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 border border-2 dark p-4">
+            <form [formGroup]="myForm" (ngSubmit)="updateSettings()">
+                <h4 class="text-center mt-2 mb-3"> Your Settings</h4>
+                <div class="mb-3 "> 
+                    <input type="text" class="form-control" placeholder="Enter your photo Url" formControlName="image">
+                  </div>
+                <div class="mb-3 ">
+                  <input type="text" class="form-control" placeholder="UserName" formControlName="username">
+                </div>
+               
+                <div class="mb-3">
+                    <textarea class="form-control" rows="15" placeholder="Short bio about you" id="floatingTextarea" formControlName="bio"></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                  </div>
+                  <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="New Password" formControlName="password" >
+                  </div>
+                <div class="text-end">
+
+                    <button type="submit" class="btn ">Update Profile</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
