@@ -1,47 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
-/* Fonts */
-:root {
-    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-primary: "Montserrat", sans-serif;
-    --font-secondary: "Poppins", sans-serif;
-  }
-  
-  /* Colors */
-  :root {
-    --color-default: #222222;
-    --color-primary: #008374;
-    --color-secondary: #f85a40;
-  }
-  
-  /* Smooth scroll behavior */
-  :root {
-    scroll-behavior: smooth;
-  }
-  
-  /*--------------------------------------------------------------
-  # General
-  --------------------------------------------------------------*/
-  body {
-    font-family: var(--font-default);
-    color: var(--color-default);
-  }
-  
-  a {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #00b6a1;
-    text-decoration: none;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-primary);
-  }
-  
+body{
+  font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+a:hover{
+  color: #008374;
+  text-decoration: none;
+}
+a{
+  color: #000;
+  text-decoration: none;
+}
+.green_color{
+  background-color:#00796b ;
+}
+.orange_color{
+  color:#f85a40;   
+}
+.sub_content{
+  background-color: #f6f6f6;
+  padding: 20px 0;
+}
+
+
+/* --------------------------------- */
+
+.form-control{
+  padding:0.7rem 0.75rem!important;
+}
+
+.form-control:focus{
+  border: 1px solid #00796b;
+  background-color: #fff;
+  border-color: none !important;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 121 107)!important;
+}

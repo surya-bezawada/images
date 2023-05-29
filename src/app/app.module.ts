@@ -4,14 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeaderComponent } from './core/Layout/header/header.component';
-import { FooterComponent } from './core/Layout/Footer/footer.component';
-
-import { LoginComponent } from './core/Auth/Login/login.component';
+;
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './modules/components/home/home.component';
-import { ContentPageComponent } from './modules/components/content-page/content-page.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LayoutComponent } from './modules/features/layout/layout.component';
+import { TokenInterceptor } from './core/Interceptors/token.interceptor';
+
 
 
 
@@ -19,14 +17,8 @@ import { ContentPageComponent } from './modules/components/content-page/content-
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent,
-    HomeComponent,
-    ContentPageComponent,
   
-
-  
+    
   ],
   imports: [
     BrowserModule,
@@ -38,7 +30,9 @@ import { ContentPageComponent } from './modules/components/content-page/content-
 
     
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
