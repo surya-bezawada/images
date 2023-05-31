@@ -28,15 +28,16 @@ export class ArticlesService {
 
   }
   
-  PutSettings(settings: {
-    bio:string;
-    email: string;
-    image:string;
-    password: string;
-    username: string;
+  // PutSettings(settings: {
+  //   bio:string;
+  //   email: string;
+  //   image:string;
+  //   password: string;
+  //   username: string;
    
-  }):Observable<{user:Setting}>{
-    return this.http.put<{user:Setting}>(environment.baseUrl+'user',{user:settings})
+  // }):Observable<{user:Setting}>{
+  //   return this.http.put<{user:Setting}>(environment.baseUrl+'user',{user:settings})
 
-  }
+  // }
+  
 }

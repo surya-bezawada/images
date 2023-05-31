@@ -58,6 +58,8 @@ export class AuthComponent implements OnInit {
         
       }).subscribe(res=>{
        console.log(res)
+       
+        
       })
       this.Form.reset();
       this.route.navigate(['account'])

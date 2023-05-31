@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
+import { ApiService } from 'src/app/core/Http/api.service';
 import { ArticlesService } from 'src/app/core/Http/articles.service';
 import { ArticlesComponent } from '../articles/articles.component';
 
@@ -9,8 +11,9 @@ import { ArticlesComponent } from '../articles/articles.component';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  onDestroy$ = new Subject<boolean>()
 myForm!:FormGroup;
-  constructor(private setting:ArticlesService,private fb:FormBuilder) { }
+  constructor(private api:ApiService,private fb:FormBuilder) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -27,14 +30,8 @@ myForm!:FormGroup;
   updateSettings(){
 
     if(this.myForm.valid){
-      this.setting.PutSettings(this.myForm.value as {
-        bio:string;
-        email: string;
-        image:string
-        password: string;
-        username: string;
-      }).subscribe(res=>{
-        //console.log(res);
+      this.api.update(this.myForm.value).pipe(takeUntil(this.onDestroy$)).subscribe(res=>{
+        console.log(res);
       })
       this.myForm.reset();
      // this.route.navigate(['/home']);

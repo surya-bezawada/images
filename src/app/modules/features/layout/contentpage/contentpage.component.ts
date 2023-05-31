@@ -40,6 +40,7 @@ img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
     ]
     this.getPagination();
     this.getPopularTagsList();
+   
   }
 
   articles:any;
@@ -58,12 +59,15 @@ getGlobalArticles(limitIndex:number,offSetIndex:number){
     ele.author.image = this.imageArray[imageIndex];
     return ele;
   });
-  console.log(this.articles);
-  
+ // console.log(this.articles);
+  let iden=res.slug;
+  this.getReadMoreData(iden)
   })
- 
+
 
 }
+
+
 getPagination():void {
   for(let i = 0;i<=this.count;i++) {
     i = i+9;
@@ -88,5 +92,14 @@ getPopularTagsList(){
    console.log(res)
  })
 }
+
+readArticles:any={};
+getReadMoreData(slug:string) {
+  this.service.getReadMore(slug).pipe(takeUntil(this.onDestroy$)).subscribe((res:any)=>{
+    console.log(res?.article);
+    this.service = res?.article
+
+  })
+ }
 
 }

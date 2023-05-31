@@ -10,9 +10,7 @@ import { ApiService } from 'src/app/core/Http/api.service';
 export class LayoutComponent implements OnInit {
 
   constructor(private route:Router,private api:ApiService) {
-    if(this.api.userValue){
-      this.route.navigate(['/home']);
-    }
+  
    }
 
   ngOnInit(): void {

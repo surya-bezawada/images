@@ -20,12 +20,11 @@ export class BlogdetailsComponent implements OnInit {
   ngOnInit(): void {
     this._route.queryParams.subscribe(res=>{
       console.log(res);
-      this.getReadMoreData(res?.['slugData'])
+      this.getReadMoreData(res?.['/slugData'])
       this.getPopularTagsList();
     })
   }
  getReadMoreData(slug:string) {
-   console.log('151');
   this._apiService.getReadMore(slug).pipe(takeUntil(this.onDestroy$)).subscribe((res:any)=>{
     console.log(res?.article);
     this.readArticles = res?.article
