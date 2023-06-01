@@ -38,6 +38,8 @@ export class ContentpageComponent implements OnInit {
     this.imageArray=[
 img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
     ]
+
+   
     this.getPagination();
     this.getPopularTagsList();
    
@@ -65,7 +67,10 @@ getGlobalArticles(limitIndex:number,offSetIndex:number){
   })
 
 
+
 }
+
+
 
 
 getPagination():void {
@@ -80,10 +85,14 @@ getSelectedCount(numberIndex:number) {
   let limitIndex = 10;
   let offSetIndex = numberIndex*10
   this.getGlobalArticles(limitIndex,offSetIndex)
+ 
 }
 
 renavigateToBlogs(slug:string) {
- this._routers.navigate(['/blog'],{queryParams:{slugData:slug}})
+  // alert(' hiiiiiiii')
+  // console.log(slug);
+  this._routers.navigate(['/user/blog'],{queryParams:{slugData:slug}})
+//  this._routers.navigate(['blog'],{queryParams:{slugData:slug}})
 }
 tags:any;
 getPopularTagsList(){

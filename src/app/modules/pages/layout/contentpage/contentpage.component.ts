@@ -38,8 +38,12 @@ export class ContentpageComponent implements OnInit {
     this.imageArray=[
 img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
     ]
+
+   
+
     this.getPagination();
     this.getPopularTagsList();
+    this.getYourArticles(limitIndex,offSetIndex);
   }
 
   articles:any;
@@ -64,6 +68,23 @@ getGlobalArticles(limitIndex:number,offSetIndex:number){
  
 
 }
+
+
+yourArticles:any;
+getYourArticles(limitIndex:number,offSetIndex:number){
+  this.service.getYFeedArticles(limitIndex,offSetIndex).subscribe((res:any)=>{
+    console.log(res);
+    this.yourArticles=res?.articles
+  
+ 
+  })
+
+
+
+}
+
+
+
 getPagination():void {
   for(let i = 0;i<=this.count;i++) {
     i = i+9;
@@ -76,10 +97,13 @@ getSelectedCount(numberIndex:number) {
   let limitIndex = 10;
   let offSetIndex = numberIndex*10
   this.getGlobalArticles(limitIndex,offSetIndex)
+  this.getYourArticles(limitIndex,offSetIndex)
 }
 
+
+
 renavigateToBlogs(slug:string) {
- this._routers.navigate(['/blog'],{queryParams:{slugData:slug}})
+ this._routers.navigate(['account/blog'],{queryParams:{slugData:slug}})
 }
 tags:any;
 getPopularTagsList(){
@@ -88,5 +112,14 @@ getPopularTagsList(){
    console.log(res)
  })
 }
+readArticles:any={};
+getReadMoreData(slug:string) {
+  this.service.getReadMore(slug).pipe(takeUntil(this.onDestroy$)).subscribe((res:any)=>{
+    console.log(res?.article);
+    this.service = res?.article
+
+  })
+ }
+
 
 }

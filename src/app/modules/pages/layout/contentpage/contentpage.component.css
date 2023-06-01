@@ -35,4 +35,22 @@
     height:320px;
     cursor: pointer;
 }
+.nav-tabs{
+   
+   
 
+
+}
+
+.nav-link{
+   width:567px;
+    font-size: 20px;
+    font-weight: 700;
+    
+    
+
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #008374!important;
+}

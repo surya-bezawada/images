@@ -1,22 +1,26 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
+  private token = new BehaviorSubject<any>(null);
+  token$ = this.token.asObservable();
 
-  constructor(private http:HttpClient) { }
+  // private afterLogIn = new BehaviorSubject<any>(null);
+  // logIn$ = this.afterLogIn.asObservable();
 
-  getToken(): string {
-    return window.localStorage["jwtToken"];
+  // storeLogInStatus(event:boolean){
+  //     this.afterLogIn.next(event);
+  // }
+  storeToken(event:any){
+      console.log(event);
+      this.token.next(event);
   }
 
-  saveToken(token: string): void {
-    window.localStorage["jwtToken"] = token;
-  }
+  
 
-  destroyToken(): void {
-    window.localStorage.removeItem("jwtToken");
-  }
+
 }

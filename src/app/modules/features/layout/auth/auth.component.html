@@ -8,7 +8,11 @@
                     <div class="signup">
                         <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
                             <label for="chk" aria-hidden="true" >Sign up</label>
-                            <input type="text"  placeholder="User name"  formControlName="username">
+                            <small class="text-danger f"
+                            *ngIf="(submitted || myForm.get('username')?.touched)  && myForm.get('username')?.errors?.['required']">First
+                            Name</small>
+                            <input type="text"  placeholder="User name"  formControlName="username"  [ngClass]="(submitted || myForm.get('username')?.touched)  && myForm.get('username')?.errors?.['required'] ? 'is-invalid' : ''">
+                      
                             <input type="email" placeholder="Email"  formControlName="email">
                             <input type="password"  placeholder="Password" formControlName="password">
                             <button type="submit">Sign up</button>

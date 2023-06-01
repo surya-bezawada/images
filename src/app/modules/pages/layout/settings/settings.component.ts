@@ -34,7 +34,7 @@ myForm!:FormGroup;
         console.log(res);
       })
       this.myForm.reset();
-     // this.route.navigate(['/home']);
+    
 
     }
       

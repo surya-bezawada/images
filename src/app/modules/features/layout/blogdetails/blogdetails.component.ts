@@ -20,7 +20,7 @@ export class BlogdetailsComponent implements OnInit {
   ngOnInit(): void {
     this._route.queryParams.subscribe(res=>{
       console.log(res);
-      this.getReadMoreData(res?.['/slugData'])
+      this.getReadMoreData(res?.['slugData'])
       this.getPopularTagsList();
     })
   }
