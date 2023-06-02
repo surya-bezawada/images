@@ -45,10 +45,12 @@ img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
    
   }
 
+
   articles:any;
 getGlobalArticles(limitIndex:number,offSetIndex:number){
   this.service.getArticles(limitIndex,offSetIndex).subscribe((res:any)=>{
-   // console.log(res);
+
+    console.log(res);
    // this.articles=res?.articles
   
  // console.log(res?.articles[0])
@@ -63,6 +65,7 @@ getGlobalArticles(limitIndex:number,offSetIndex:number){
   });
  // console.log(this.articles);
   let iden=res.slug;
+  console.log(res.slug)
   this.getReadMoreData(iden)
   })
 

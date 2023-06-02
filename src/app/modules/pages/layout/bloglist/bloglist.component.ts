@@ -14,7 +14,8 @@ export class BloglistComponent implements OnInit {
   readArticles:any={};
   constructor(
     private _route: ActivatedRoute,
-    private _apiService:ArticlesService
+    private _apiService:ArticlesService,
+    
     ) { }
 
   ngOnInit(): void {
@@ -22,10 +23,10 @@ export class BloglistComponent implements OnInit {
       console.log(res);
       this.getReadMoreData(res?.['slugData'])
       this.getPopularTagsList();
+      this.getCommentList();
     })
   }
  getReadMoreData(slug:string) {
-   console.log('151');
   this._apiService.getReadMore(slug).pipe(takeUntil(this.onDestroy$)).subscribe((res:any)=>{
     console.log(res?.article);
     this.readArticles = res?.article
@@ -39,5 +40,14 @@ export class BloglistComponent implements OnInit {
     console.log(res)
   })
  }
+
+
+ getCommentList(){
+  this._apiService.getComment().subscribe(res=>{
+    console.log(res);
+  })
+ }
+ 
+
 
 }

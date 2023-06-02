@@ -67,7 +67,7 @@
                                     <div class="card mb-2 ">
                                         <div class="p-4 content">
                                             <h3 class="title"><a routerLinkActive="active" (click) = "renavigateToBlogs(item?.slug)">
-                                                <!-- {{item.title}} -->
+                                              
                                                 {{item.title.length > 90 ? (item.title | slice:0:90) + '..' : item.title}}
                                             </a></h3>
                                             <p>{{item.description > 90 ? (item.description| slice:0:90) + '..' : item.description}}</p>

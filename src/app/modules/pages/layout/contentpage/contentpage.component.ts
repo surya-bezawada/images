@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { ArticlesService } from 'src/app/core/Http/articles.service';
+import { JwtService } from 'src/app/core/Http/jwt.service';
 
 @Component({
   selector: 'app-contentpage',
@@ -14,7 +15,8 @@ export class ContentpageComponent implements OnInit {
 
   constructor(
     private service: ArticlesService,
-    private _routers:Router
+    private _routers:Router,
+    private jwt:JwtService
     ) { }
   imageArray:String[]=[]
   count:number = 197;
@@ -50,7 +52,9 @@ img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
 getGlobalArticles(limitIndex:number,offSetIndex:number){
   this.service.getArticles(limitIndex,offSetIndex).subscribe((res:any)=>{
    // console.log(res);
-   // this.articles=res?.articles
+  // let slugData=res?.article.slug;
+  // this.jwt.storeToken(slugData)
+
   
  // console.log(res?.articles[0])
   // this.articles=res?.articles.map((ele:any)=>{

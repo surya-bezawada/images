@@ -19,12 +19,13 @@ import { JwtService } from "./jwt.service";
 
  
 
+  //getting articles
   getArticles(Limit:number,Offset:number):Observable<any>{
       return this.http.get(environment.baseUrl+'articles?limit='+Limit+'&offset='+Offset)
   }
 
 
-
+//signup
   registration(credentials: {
     username: string;
     email: string;
@@ -34,6 +35,7 @@ import { JwtService } from "./jwt.service";
 
   }
 
+  //singin
   login(credentials:{
     email: string;
     password: string;
@@ -43,13 +45,17 @@ import { JwtService } from "./jwt.service";
 
   }
 
+  //logout
   logout() {
     
    this.router.navigate(["user/auth"]);
 
   }
 
+
+  //setting 
   update(user: Partial<User>): Observable<any> {
+    
     return this.http.put<{ user: User }>(environment.baseUrl+"user",  {user} )
      
   }
