@@ -48,7 +48,7 @@ import { JwtService } from "./jwt.service";
   //logout
   logout() {
     
-   this.router.navigate(["user/auth"]);
+   this.router.navigate(["user/signin"]);
 
   }
 

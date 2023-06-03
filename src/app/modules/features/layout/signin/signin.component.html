@@ -1,0 +1,30 @@
+<div class="container mt-5 pt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-5">
+            <div class="main">
+
+                <div class="signup">
+                    <form [formGroup]="Form" (ngSubmit)="signin()">
+                        <div class="mb-5">
+                            <label for="chk" aria-hidden="true">Sign In</label>
+                        </div>
+                        <div class="text-danger text-center fw-bold fs-5" *ngIf="errorMessage"> {{'email or password is invalid'}}</div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Password" formControlName="password">
+                        </div>
+                        <div class=" mt-2">
+                            <a href="" class=" navigateLink"routerLink="/user/signup">Not a User ? Please SignUp</a>
+                        </div>
+                        <div class="mt-3">
+
+                            <button type="submit" class="reg mt-3">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

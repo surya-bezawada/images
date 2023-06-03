@@ -58,9 +58,12 @@
     color: rgba(255, 255, 255, 0.8);
 }
 .btn{
-    width:100px;
+    width:240px;
     height: 40px;
-    background-color: #f85a40;
+    background-color: #fff;
+    color: #000;
+   
     font-weight: bold;
+    
 
 }

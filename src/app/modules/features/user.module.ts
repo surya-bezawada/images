@@ -10,6 +10,10 @@ import { NavbarComponentt } from './layout/navbar/navbar.component';
 import { NavfooterComponent } from './layout/navfooter/navfooter.component';
 import { LayoutComponent } from './layout/layout.component';
 
+import { SigninComponent } from './layout/signin/signin.component';
+import { SignupComponent } from './layout/signup/signup.component';
+
+
 
 
 
@@ -21,6 +25,9 @@ import { LayoutComponent } from './layout/layout.component';
    ContentpageComponent,
    BlogdetailsComponent,
    LayoutComponent,
+ 
+   SigninComponent,
+   SignupComponent,
 
   ],
   imports: [
