@@ -1,0 +1,25 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-12">
+
+
+            <h3>descri The Of creates the observable from the arguments that you pass into it. You can pass any number of arguments to the Of. Each argument emitted separately and one after the other. It sends the Complete signal in the end.</h3>
+            <div class="main">
+                <h1>{{articleData.title}}</h1>
+                <div>
+                    {{articleData.description}}
+                </div>
+                <div>
+                    <img src="{{articleData.author.image}}" alt="">
+                </div>
+
+                <div>
+                    <button type="submit" (click) = "onEdit(articleData?.slug)">Edit</button>
+                    <button>Delete</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

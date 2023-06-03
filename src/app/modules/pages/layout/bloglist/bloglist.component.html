@@ -23,13 +23,36 @@
                 <div class="box_shadow mb-3">
                    <h2 style="color:#008374">comments</h2>
                    <div class="mb-3">
-                    <textarea class="form-control" rows="6" placeholder="Leave a comment here" id="floatingTextarea" ></textarea>
+                    <textarea class="form-control" rows="6" placeholder="Leave a comment here" id="floatingTextarea" [(ngModel)]="comments" ></textarea>
                   </div>
                   <div class="text-end">
-                    <button type="submit" class="btn" >Post Comment</button>
+                    <button type="submit" class="btn" (click)="saveComments()" >Post Comment</button>
 
                   </div>
                 
+
+                </div>
+
+
+                <div class="box_shadow mb-3">
+                    <div class="card border-success mb-3 rounded-0" *ngFor="let item of commentList" >
+                        <div class="card-header  border-success d-flex">
+                            <div class="title">
+                                Comments
+                            </div>
+                            <div class="delete ms-auto" (click)="deleteComments(item)">
+                              <span> <i class="bi bi-trash3-fill"></i></span> 
+                            </div>
+
+                        </div>
+                        <div class="card-body text-success" >
+                          
+                          <p class="card-text">{{item.body}}</p>
+                        </div>
+                        <div class="card-footer  border-success">
+                           <span><i class="bi bi-person-circle"></i>{{item.author.username}}</span>
+                        </div>
+                      </div>
 
                 </div>
 

@@ -9,15 +9,32 @@ export class JwtService {
   private token = new BehaviorSubject<any>(null);
   token$ = this.token.asObservable();
 
-  // private afterLogIn = new BehaviorSubject<any>(null);
-  // logIn$ = this.afterLogIn.asObservable();
+  private viewArticle = new BehaviorSubject<any>(null);
+  viewArticle$ = this.viewArticle.asObservable();
 
-  // storeLogInStatus(event:boolean){
-  //     this.afterLogIn.next(event);
-  // }
+  private afterLogIn = new BehaviorSubject<any>(null);
+  logIn$ = this.afterLogIn.asObservable();
+
+
+  private seletedArticleData = new BehaviorSubject<any>(null);
+  seletedArticleData$=this.seletedArticleData.asObservable();
+
+  storeLogInStatus(event:boolean){
+      this.afterLogIn.next(event);
+  }
+ 
+getSelectedArticleData(data:any){
+  this.seletedArticleData.next(data);
+}
+
+
   storeToken(event:any){
       console.log(event);
       this.token.next(event);
+  }
+
+  stoteViewArticle(data:any){
+    this.viewArticle.next(data)
   }
 
   

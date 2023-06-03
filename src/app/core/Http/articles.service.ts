@@ -2,21 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { NewArticle } from '../Model/article';
-import { Comments } from '../Model/comments';
-import { Setting } from '../Model/setting';
 import { JwtService } from './jwt.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
-  slug!:string;
-
 
   constructor(private http:HttpClient,private jwt:JwtService) { }
   
-
   //get global articles
   getArticles(limit:number,offset:number){
     return this.http.get(environment.baseUrl+'articles'+'?limit='+limit+'&offset='+offset);
@@ -51,15 +45,15 @@ export class ArticlesService {
 
 
  //comments
- getComment():Observable<any>{
-  
-  this.jwt.token$.subscribe(res=>{
-    this.slug=res;
-    console.log(res)
-  })
-  return this.http.get(environment.baseUrl+'articles'+'/slug'+'/comments')
+ getComment(slug:any):Observable<any>{
+  return this.http.get(environment.baseUrl+'articles'+'/'+slug+'/'+'comments')
 }
-
+saveComponent(body:any,slug:any):Observable<any>{
+  return this.http.post(environment.baseUrl+'articles'+'/'+slug+'/'+'comments',body);
+}
+deleteComments(slug:any,id:any):Observable<any>{
+  return this.http.delete(environment.baseUrl+'articles'+'/'+slug+'/'+'comments'+'/'+id)
+}
 
   
 }

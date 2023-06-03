@@ -16,7 +16,7 @@ export class ContentpageComponent implements OnInit {
   constructor(
     private service: ArticlesService,
     private _routers:Router,
-    private jwt:JwtService
+    private jwt:JwtService,
     ) { }
   imageArray:String[]=[]
   count:number = 197;
@@ -54,6 +54,7 @@ getGlobalArticles(limitIndex:number,offSetIndex:number){
    // console.log(res);
   // let slugData=res?.article.slug;
   // this.jwt.storeToken(slugData)
+ this.jwt.getSelectedArticleData(res.articles);
 
   
  // console.log(res?.articles[0])

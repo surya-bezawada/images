@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/Http/api.service';
+import { JwtService } from 'src/app/core/Http/jwt.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,15 @@ import { ApiService } from 'src/app/core/Http/api.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private api:ApiService) { }
+  userName!:string;
+  constructor(private api:ApiService,private jwt:JwtService) { }
 
   ngOnInit(): void {
+    this.jwt.logIn$.subscribe(res=>{
+      this.userName=res;
+    })
+
+
   }
 logoutbtn(){
   this.api.logout();

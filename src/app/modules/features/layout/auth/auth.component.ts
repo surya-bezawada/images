@@ -43,11 +43,18 @@ export class AuthComponent implements OnInit {
         email: string;
         password: string;
         username: string;
-      }).subscribe(res=>{
+      }).subscribe({
+       next:(res)=>{
         console.log(res);
+       },
+       error:(error)=>{
+        this.err=error?.error?.errors;
+        console.log(error)
+
+       }
       })
       this.myForm.reset();
-     // this.route.navigate(['/home']);
+   
 
     }
 
@@ -57,35 +64,36 @@ export class AuthComponent implements OnInit {
     return this.myForm.controls;
   }
 
+  err:any;
   signin(){
 
-//     let obj =new UserLogIn();
-//   obj.email=this.Form.get('userName')?.value;
-//   obj.password=this.Form.get('passWord')?.value;
-//   // let user=new Users();
-//   // user.user= obj;
-//   this.service.login(obj).subscribe(res=>{
-// console.log(res)
-// if(res){
-//   this.jwtService.storeToken({token:res.user?.token})    
-// }
-// this.Form.reset();
-// //     this.route.navigate(['account'])
-//   })
+
 let user:any;
+let username:any;
     if(this.Form.valid){
       this.service.login(this.Form.value as {
         email: string;
-        password: string;}).subscribe(res=>{
-       console.log(res);
-       user=res.user.token
-       this.jwtService.storeToken({token:user})
-      //  if(res.user.token)
-           
-      })
-    
+        password: string;}).subscribe({
+          next:(res)=>{
+            console.log(res);
+            user=res.user.token
+            this.jwtService.storeToken({token:user})
+            username=res.user.username
+            this.jwtService.storeLogInStatus(username);
+            this.route.navigate(['account'])
+
+          },
+          error:(error)=>{
+            this.err=error?.error?.errors;
+
+          }
+      
      
-      this.route.navigate(['account'])
+           
+      },
+      
+      )
+      
       this.Form.reset();
     }
   
