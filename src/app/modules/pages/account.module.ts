@@ -10,6 +10,7 @@ import { ContentpageComponent } from './layout/contentpage/contentpage.component
 import { BloglistComponent } from './layout/bloglist/bloglist.component';
 import { SettingsComponent } from './layout/settings/settings.component';
 import { ViewArticleComponent } from './layout/view-article/view-article.component';
+import { ProfileComponent } from './layout/profile/profile.component';
 
 
 
@@ -22,7 +23,8 @@ import { ViewArticleComponent } from './layout/view-article/view-article.compone
     ContentpageComponent,
     BloglistComponent,
     SettingsComponent,
-    ViewArticleComponent
+    ViewArticleComponent,
+    ProfileComponent
 
   ],
   imports: [

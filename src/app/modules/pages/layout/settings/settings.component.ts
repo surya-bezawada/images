@@ -4,6 +4,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { ApiService } from 'src/app/core/Http/api.service';
 import { ArticlesService } from 'src/app/core/Http/articles.service';
 import { ArticlesComponent } from '../articles/articles.component';
+import { Router } from '@angular/router';
+import { JwtService } from 'src/app/core/Http/jwt.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +15,7 @@ import { ArticlesComponent } from '../articles/articles.component';
 export class SettingsComponent implements OnInit {
   onDestroy$ = new Subject<boolean>()
 myForm!:FormGroup;
-  constructor(private api:ApiService,private fb:FormBuilder) { }
+  constructor(private api:ApiService,private fb:FormBuilder,private route:Router,private jwt:JwtService) { }
 
   ngOnInit() {
     this.myForm = this.fb.group({
@@ -25,22 +27,26 @@ myForm!:FormGroup;
      
     })
 
+  
+
   }
-
+  err:any;
   updateSettings(){
-
     if(this.myForm.valid){
-      this.api.update(this.myForm.value).pipe(takeUntil(this.onDestroy$)).subscribe(res=>{
-        console.log(res);
+      this.api.update(this.myForm.value).pipe(takeUntil(this.onDestroy$)).subscribe({
+        next:(res)=>{
+          console.log(res)
+          this.jwt.getProfile(res)
+          this.route.navigate(['account/profile'])
+         },
+         error:(error)=>{
+          this.err=error?.error?.errors;
+          console.log(error)
+  
+         }
       })
       this.myForm.reset();
-    
-
     }
-      
-   
-    
-    
   }
 
 }

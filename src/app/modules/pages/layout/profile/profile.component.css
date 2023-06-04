@@ -1,0 +1,36 @@
+.btn{
+    height: 50px;
+    width:200px;
+    
+    color:#fff;
+    background-color: #00796b;
+    border-radius: 60px;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+.btn:hover{
+    color: black;
+    background-color: beige;
+    border:1px solid #00796b;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #00796b;
+    background-color: white;
+    border-bottom: 3px solid #00796b;
+    font-weight: bold;
+   
+}
+button:focus:not(:focus-visible) {
+    outline: 0;
+}
+.nav-pills .nav-link {
+    background: none;
+    border: 0;
+     border-radius: 0px;
+}
+.nav-link{
+    color:black;
+    font-weight: 500;
+}

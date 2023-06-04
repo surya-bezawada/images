@@ -6,6 +6,7 @@ import { ContentpageComponent } from "./layout/contentpage/contentpage.component
 import { LayoutComponent } from "./layout/layout.component";
 import { SettingsComponent } from "./layout/settings/settings.component";
 import { ViewArticleComponent } from "./layout/view-article/view-article.component";
+import { ProfileComponent } from "./layout/profile/profile.component";
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
       {path:'article',component:ArticlesComponent},
       {path:'blog',component:BloglistComponent},
       {path:'settings',component:SettingsComponent},
-      {path:'view-article',component:ViewArticleComponent}
+      {path:'view-article',component:ViewArticleComponent},
+      {path:'profile',component:ProfileComponent}
   ]
   },
  

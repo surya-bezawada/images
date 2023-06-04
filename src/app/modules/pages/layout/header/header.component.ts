@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
       this.userName=res;
     })
 
-
   }
 logoutbtn(){
   this.api.logout();

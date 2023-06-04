@@ -1,25 +1,68 @@
 <div class="container">
-    
-    <div class="row">
+
+    <div class="row p-3">
         <div class="col-12">
-
-
-            <h3>descri The Of creates the observable from the arguments that you pass into it. You can pass any number of arguments to the Of. Each argument emitted separately and one after the other. It sends the Complete signal in the end.</h3>
-            <div class="main">
+            <div class="box_shadow">
                 <h1>{{articleData.title}}</h1>
                 <div>
                     {{articleData.description}}
                 </div>
-                <div>
-                    <img src="{{articleData.author.image}}" alt="">
+                <img src="{{articleData.author.image}}" class="rounded-circle" alt="">
+                <div class="">
+                    <div class="user">{{articleData.author.username}}</div>
+                    <div class="date">{{articleData?.createdAt}}</div>
                 </div>
 
+
                 <div>
-                    <button type="submit" (click) = "onEdit(articleData?.slug)">Edit</button>
-                    <button>Delete</button>
+                    <button type="submit" (click)="onEdit(articleData?.slug)" class="btn me-2">Edit Article</button>
+                    <button type="submit" class="btn-1 ">Delete Article</button>
                 </div>
+
 
             </div>
+            <hr />
+            <div class="box_shadow mb-3">
+                <h2 style="color:#008374">comments</h2>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="6" placeholder="Leave a comment here" id="floatingTextarea"
+                        [(ngModel)]="comments"></textarea>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn-3" (click)="saveComments()">Post Comment</button>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="card border-success mb-3 rounded-0" *ngFor="let item of commentList">
+                <div class="card-header  border-success d-flex">
+                    <div class="title">
+                        Comments
+                    </div>
+                    <div class="delete ms-auto" (click)="deleteComments(item)">
+                        <span> <i class="bi bi-trash3-fill"></i></span>
+                    </div>
+
+                </div>
+                <div class="card-body text-success">
+
+                    <p class="card-text">{{item.body}}</p>
+                </div>
+                <div class="card-footer  border-success">
+                    <span><i class="bi bi-person-circle"></i>{{item.author.username}}</span>
+                </div>
+            </div>
+
         </div>
     </div>
+
+
+
+
 </div>
