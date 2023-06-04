@@ -19,7 +19,7 @@ export class ArticlesService {
 
   //get your feed
   getYFeedArticles(limit:number,offset:number){
-    return this.http.get(environment.baseUrl+'articles/feed'+'?limit='+limit+'&offset='+offset);
+    return this.http.get(environment.baseUrl+'articles/'+'?feed'+'&limit='+limit+'&offset='+offset);
 
   }
   getReadMore(slug:string) {
@@ -55,5 +55,10 @@ deleteComments(slug:any,id:any):Observable<any>{
   return this.http.delete(environment.baseUrl+'articles'+'/'+slug+'/'+'comments'+'/'+id)
 }
 
+
+getArticleTags(titleName:string){
+  return this.http.get(environment.baseUrl+'articles/'+'?titlename='+titleName)
+
+}
   
 }

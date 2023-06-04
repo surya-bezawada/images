@@ -40,12 +40,27 @@ export class ContentpageComponent implements OnInit {
     this.imageArray=[
 img1, img2, img3, img4,img5,img6,img7,img8,img9,img10
     ]
-
+    this.getYourArticles(limitIndex,offSetIndex)
+    let img11='./assets/blog-1.jpg'
+    let img12='./assets/blog-2.jpg'
+    let img13='./assets/blog-3.jpg'
+    let img14='./assets/blog-4.jpg'
+    let img15='./assets/blog-5.jpg'
+    let img16='./assets/blog-6.jpg'
+    let img17='./assets/blog-recent-1.jpg'
+    let img18='./assets/blog-inside-post.jpg'
+    let img19='./assets/blog-recent-4.jpg'
+    let img20='./assets/blog-recent-5.jpg'
+ 
+    this.imageArray=[
+img11, img12, img13, img14,img15,img16,img17,img18,img19,img20
+    ]
    
 
     this.getPagination();
     this.getPopularTagsList();
     this.getYourArticles(limitIndex,offSetIndex);
+    this.getAtricleTitleTags();
   }
 
   articles:any;
@@ -79,11 +94,14 @@ yourArticles:any;
 getYourArticles(limitIndex:number,offSetIndex:number){
   this.service.getYFeedArticles(limitIndex,offSetIndex).subscribe((res:any)=>{
     console.log(res);
-    this.yourArticles=res?.articles
-  
- 
-  })
-
+    this.yourArticles=res.articles.map((ele: any, index: number) => {
+      const imageIndex = index % this.imageArray.length;
+      ele.author.image = this.imageArray[imageIndex];
+      return ele;
+    });
+    console.log(this.yourArticles);
+    
+    })
 
 
 }
@@ -127,4 +145,9 @@ getReadMoreData(slug:string) {
  }
 
 
+ getAtricleTitleTags(){
+  this.service.getArticleTags(this.articles.author.username).subscribe(res=>{
+    console.log(res)
+  })
+}
 }
