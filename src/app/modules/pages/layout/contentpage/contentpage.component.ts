@@ -12,6 +12,7 @@ import { JwtService } from 'src/app/core/Http/jwt.service';
 export class ContentpageComponent implements OnInit {
 
   onDestroy$ = new Subject<boolean>()
+  selectedTag: string = '';
 
   constructor(
     private service: ArticlesService,
@@ -60,7 +61,7 @@ img11, img12, img13, img14,img15,img16,img17,img18,img19,img20
     this.getPagination();
     this.getPopularTagsList();
     this.getYourArticles(limitIndex,offSetIndex);
-    this.getAtricleTitleTags();
+  
   }
 
   articles:any;
@@ -132,7 +133,8 @@ tags:any;
 getPopularTagsList(){
  this.service.getPopularTags().pipe(takeUntil(this.onDestroy$)).subscribe(res=>{
    this.tags=res;
-   console.log(res)
+   console.log(res);
+  //  this.getAtricleTitleTags()as
  })
 }
 readArticles:any={};
@@ -145,9 +147,14 @@ getReadMoreData(slug:string) {
  }
 
 
- getAtricleTitleTags(){
-  this.service.getArticleTags(this.articles.author.username).subscribe(res=>{
+ getAtricleTitleTags(tags:string){
+  this.service.getArticleTags(tags).subscribe(res=>{
     console.log(res)
   })
+}
+getSelectedTag(tagsData:string) :void {
+  console.log(tagsData);
+  this.selectedTag = tagsData
+  this.getAtricleTitleTags(tagsData)
 }
 }

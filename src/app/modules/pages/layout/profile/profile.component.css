@@ -1,12 +1,12 @@
 .btn{
-    height: 50px;
+    height: 45px;
     width:200px;
     
     color:#fff;
     background-color: #00796b;
     border-radius: 60px;
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: 600;
+    font-size: 15px;
     text-align: center;
 }
 .btn:hover{

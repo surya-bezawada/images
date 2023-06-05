@@ -8,27 +8,67 @@ import { ProfileService } from 'src/app/core/Http/profile.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  selectedProfile:any;
+  selectedProfile: any;
 
-  constructor(private jwt:JwtService,private profile:ProfileService) { }
+  constructor(private jwt: JwtService, private profile: ProfileService) { }
 
   ngOnInit(): void {
-    this.jwt.profile$.subscribe(res=>{
-      this.selectedProfile=res;
-      console.log(this.selectedProfile)
-      this.getMyPostList();
+    this.jwt.token$.subscribe(res => {
+      this.selectedProfile = res;
+      // console.log(res.token);
+      // console.log(this.selectedProfile)
+      console.log(res?.token?.username)
+      this.getMyPostList(res?.token?.username);
+      this.getMyFavoriteList(res?.token?.username)
+      this.getProfiles(res?.token?.username)
+      // this.getMyFavoriteList();
 
     })
   }
 
-  getMyPostList(){
-    this.profile.getMyPost(this.selectedProfile.user.username,10,0).subscribe({
-      next:(res)=>{
-        console.log(res)
+  limitIndex: number = 10;
+  offSetIndex: number = 0;
+  myPost:any=[]
+  getMyPostList(userName: string) {
+
+    this.profile.getMyPost(userName, this.limitIndex, this.offSetIndex).subscribe({
+      next: (res:any) => {
+      this.myPost=res.articles
+      console.log(this.myPost)
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  myFavoritePost:any=[];
+  getMyFavoriteList(userName: string) {
+
+    this.profile.getFavoritPost(userName, this.limitIndex, this.offSetIndex).subscribe({
+      next: (res:any) => {
+        this.myFavoritePost=res.articles;
+        console.log(this.myFavoritePost)
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  myProfile:any;
+  getProfiles(userName:string){
+    this.profile.profilePageAction(userName).subscribe({
+      next:(res:any)=>{
+        console.log(res);
+      this.myProfile=res;
+
       },
       error:(error)=>{
         console.log(error)
       }
     })
   }
+
 }
+

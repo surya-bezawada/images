@@ -10,14 +10,14 @@ export class ProfileService {
   constructor(private http:HttpClient) { }
   
   getMyPost(author:string,limit:number,offset:number){
-    return this.http.get(environment.baseUrl+'articles'+'?author='+author+'?limit='+limit+'&offset='+offset)
+    return this.http.get(environment.baseUrl+'articles'+'?author='+author+'&limit='+limit+'&offset='+offset)
   }
 
   getFavoritPost(author:string,limit:number,offset:number){
-    return this.http.get(environment.baseUrl+'articles'+'?favorited='+author+'?limit='+limit+'&offset='+offset)
+    return this.http.get(environment.baseUrl+'articles'+'?favorited='+author+'&limit='+limit+'&offset='+offset)
 
   }
   profilePageAction(author:string){
-    return this.http.get(environment.baseUrl+'profiles'+'/'+':author')
+    return this.http.get(environment.baseUrl+'profiles/'+author)
   }
 }

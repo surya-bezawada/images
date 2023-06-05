@@ -5,7 +5,7 @@
                 <div class="mt-3 tags_css  ">
                     <h5>Popular Tags</h5>
                     <ul class="text-start mt-3 " *ngFor="let taglist of tags?.tags">
-                        <li > <a class="d-flex justify-content-center">{{taglist}}</a></li>
+                        <li (click) = "getSelectedTag(taglist)" > <a class="d-flex justify-content-center">{{taglist}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -28,6 +28,11 @@
                     <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill"
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">Your Feed</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">{{selectedTag}}</button>
                 </li>
 
             </ul>

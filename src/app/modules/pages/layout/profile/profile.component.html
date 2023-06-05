@@ -1,10 +1,11 @@
-<div class="container-fluid mt-4">
-    <div class="row justify-content-center">
-        <div class="col-12  ">
+<div class="container-fluid mt-1 p-3 text-center" style="background-color: antiquewhite;">
+    <div class="row ">
+        <div class="col-12">
             <div class="img rounded-circle">
-                <img src="{{selectedProfile.user.image}}" alt="">
+                <img src="{{myProfile?.profile?.image}}" alt="">
             </div>
-            <h1 class="profile">{{selectedProfile.user.username|titlecase }}</h1>  
+            <h1 class="profile">{{myProfile?.profile?.username}}</h1>  
+            <p>{{myProfile?.profile?.bio}}</p>
             <button class="btn mb-3">Edit Setting</button>          
         </div>
     </div>
@@ -20,8 +21,49 @@
        
       </ul>
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">MyPosts</div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">MyFaviortePosts</div>
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="row">
+            <div class="col-12" *ngFor="let item of myPost">
+              <div class="card mt-2 mb-2">
+                <div class="card-body">
+                  <div class="img-body d-flex gap-2" >
+                    <img src="{{item.author.image}}" class="rounded-circle
+                    " alt="">
+                    <div class="content mt-3">
+                      <div>{{item.author.username}}</div>
+                      <div>{{item.createdAt}}</div>
+                    </div>
+                  </div>
+                  <h2 class="card-title">{{item.title}}</h2>
+                  <h6 class="card-subtitle mb-2 text-muted">{{item.description}}</h6>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <div class="row">
+            <div class="col-12" *ngFor="let item of myFavoritePost ">
+              <div class="card mt-2 mb-2">
+                <div class="card-body">
+                  <div class="img-body d-flex gap-2" >
+                    <img src="{{item.author.image}}" class="rounded-circle
+                    " alt="">
+                    <div class="content mt-3">
+                      <div>{{item.author.username}}</div>
+                      <div>{{item.createdAt}}</div>
+                    </div>
+                  </div>
+                  <h2 class="card-title">{{item.title}}</h2>
+                  <h6 class="card-subtitle mb-2 text-muted">{{item.description}}</h6>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
       </div>
 

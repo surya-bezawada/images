@@ -37,7 +37,7 @@ export class SigninComponent implements OnInit {
       }).subscribe({
         next: (res) => {
           console.log(res);
-          user = res.user.token
+          user = res.user
           this.jwtService.storeToken({ token: user })
           username = res.user.username
           this.jwtService.storeLogInStatus(username);

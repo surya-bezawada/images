@@ -17,7 +17,8 @@ export class TokenInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       let token;
     this.jwt.token$.subscribe(res=>{
-      token = res?.token;
+      console.log(res);
+      token = res?.token?.token;
     })
 
       // Clone the request and set the token in the headers

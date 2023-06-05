@@ -57,7 +57,7 @@ deleteComments(slug:any,id:any):Observable<any>{
 
 
 getArticleTags(titleName:string){
-  return this.http.get(environment.baseUrl+'articles/'+'?titlename='+titleName)
+  return this.http.get(environment.baseUrl+'articles'+'?tag='+titleName+"&limit="+10+"&offset="+0)
 
 }
   
