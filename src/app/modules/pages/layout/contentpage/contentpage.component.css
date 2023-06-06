@@ -47,6 +47,10 @@
     font-weight: 500;
 }
 
+.tags_css{
+    display: flex;
+    flex-direction: column;
+}
 .tags_css ul li {
     display: inline-block;
 }
