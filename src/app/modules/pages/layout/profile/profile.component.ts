@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { JwtService } from 'src/app/core/Http/jwt.service';
 import { ProfileService } from 'src/app/core/Http/profile.service';
 
@@ -10,7 +11,7 @@ import { ProfileService } from 'src/app/core/Http/profile.service';
 export class ProfileComponent implements OnInit {
   selectedProfile: any;
 
-  constructor(private jwt: JwtService, private profile: ProfileService) { }
+  constructor(private jwt: JwtService, private profile: ProfileService,private route:Router) { }
 
   ngOnInit(): void {
     this.jwt.token$.subscribe(res => {
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
       this.getMyPostList(res?.token?.username);
       this.getMyFavoriteList(res?.token?.username)
       this.getProfiles(res?.token?.username)
+
       // this.getMyFavoriteList();
 
     })
@@ -70,5 +72,18 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-}
+  updateProfile(data:any){
+    const queryParams = {
+      isNewArticle: true,
+      slug:data?.slug
+    };
+
+    this.route.navigate(["account/settings"], { queryParams });
+  }
+
+
+ }
+
+
+
 

@@ -146,15 +146,17 @@ getReadMoreData(slug:string) {
   })
  }
 
-
+ popularTags:any;
  getAtricleTitleTags(tags:string){
-  this.service.getArticleTags(tags).subscribe(res=>{
+  this.service.getArticleTags(tags).subscribe((res:any)=>{
     console.log(res)
+    this.popularTags=res.articles
   })
 }
 getSelectedTag(tagsData:string) :void {
   console.log(tagsData);
   this.selectedTag = tagsData
+  console.log(this.selectedTag)
   this.getAtricleTitleTags(tagsData)
 }
 }

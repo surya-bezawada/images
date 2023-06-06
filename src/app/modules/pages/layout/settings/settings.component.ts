@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   onDestroy$ = new Subject<boolean>()
 myForm!:FormGroup;
   constructor(private api:ApiService,private fb:FormBuilder,private route:Router,private jwt:JwtService) { }
-
+  selectedProfile:any;
   ngOnInit() {
     this.myForm = this.fb.group({
       bio:['',[Validators.required]],
@@ -26,6 +26,11 @@ myForm!:FormGroup;
       username:['',[Validators.required]],
      
     })
+    this.jwt.token$.subscribe((res:any) => {
+      this.patchData(res?.token)
+   
+    
+  })
 
   
 
@@ -47,6 +52,17 @@ myForm!:FormGroup;
       })
       this.myForm.reset();
     }
+  }
+
+  patchData(data:any){
+    console.log(data);
+    this.myForm.patchValue({
+      image:data?.image,
+      username:data?.username,
+      bio:data?.bio,
+      email:data?.email
+    })
+
   }
 
 }

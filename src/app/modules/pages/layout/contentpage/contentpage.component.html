@@ -1,11 +1,12 @@
 <div class="container">
     <div class="row ">
-        <div class="col-12" >
+        <div class="col-12">
             <div class="box_shadow ">
                 <div class="mt-3 tags_css  ">
                     <h5>Popular Tags</h5>
                     <ul class="text-start mt-3 " *ngFor="let taglist of tags?.tags">
-                        <li (click) = "getSelectedTag(taglist)" > <a class="d-flex justify-content-center">{{taglist}}</a></li>
+                        <li (click)="getSelectedTag(taglist)"> <a class="d-flex justify-content-center">{{taglist}}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -15,7 +16,7 @@
 
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
         <div class="col-12">
 
             <ul class="nav nav-pills nav-tabs mb-3 justify-content-center mt-3" id="pills-tab" role="tablist">
@@ -29,9 +30,10 @@
                         data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                         aria-selected="false">Your Feed</button>
                 </li>
+
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link rounded-0" id="pills-profile-tab" data-bs-toggle="pill"
-                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                    <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
                         aria-selected="false">{{selectedTag}}</button>
                 </li>
 
@@ -126,6 +128,49 @@
 
                     </section>
 
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <section class="mt-5 pt-2 mb-3">
+                        <div class="container">
+                            <div class="row mb-4 d-flex ">
+                                <div class="col-lg-6 " *ngFor="let item of popularTags">
+                                    <div class="card mb-2 ">
+                                        <div class="p-4 content">
+                                            <h3 class="title"><a routerLinkActive="active"
+                                                    (click)="renavigateToBlogs(item?.slug)">
+
+                                                    {{item.title.length > 90 ? (item.title | slice:0:90) + '..' :
+                                                    item.title}}
+                                                </a></h3>
+                                            <p>{{item.description > 90 ? (item.description| slice:0:90) + '..' :
+                                                item.description}}</p>
+                                            <div class="mt-3 d-flex justify-content-start">
+                                                <img src="{{item.author.image}}"
+                                                    class="rounded-circle img-fluid small_img" alt="" />
+                                                <div class="name_date ms-3">
+                                                    <h6 class="mt-2">{{item.author.username}}</h6>
+                                                    <p>{{item.createdAt|date:'MMM d, yyyy'}}</p>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="mt-3 tags_css d-flex justify-content-center">
+                                                <ul class="text-start mt-3"
+                                                    *ngFor="let taglist of readArticles.tagList">
+                                                    <li><a>{{taglist}}</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                    </section>
                 </div>
             </div>
             <div class="container">

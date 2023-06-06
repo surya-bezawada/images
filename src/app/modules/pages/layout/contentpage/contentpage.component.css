@@ -35,24 +35,16 @@
     height:320px;
     cursor: pointer;
 }
-.nav-tabs{
-   
-   
 
 
+.nav-pills .nav-link {
+    background: none;
+    border: 0;
+     border-radius: 0px;
 }
-
 .nav-link{
-   width:567px;
-    font-size: 20px;
-    font-weight: 700;
-    
-    
-
-}
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #008374!important;
+    color:black;
+    font-weight: 500;
 }
 
 .tags_css ul li {
@@ -83,4 +75,15 @@
     padding: 30px;
    border-bottom-left-radius: 10px;
    border-bottom-right-radius: 10px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #00796b;
+    background-color: white;
+    border-bottom: 3px solid #00796b;
+    font-weight: bold;
+   
+}
+button:focus:not(:focus-visible) {
+    outline: 0;
 }
